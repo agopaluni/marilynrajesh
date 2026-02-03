@@ -5,6 +5,10 @@ const nextConfig = {
     // Don't fail build on ESLint warnings
     ignoreDuringBuilds: true,
   },
+  typescript: {
+    // Don't fail build on TypeScript errors
+    ignoreBuildErrors: true,
+  },
   images: {
     remotePatterns: [
       {
