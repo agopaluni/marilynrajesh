@@ -1,0 +1,170 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    /* Light theme - warmer cream background with darker mint text */
+    --bg: 252 231 199;
+    --text: 87 107 84;
+    --muted: 87 107 84;
+    --border: 87 107 84;
+    --card: 255 255 255;
+    --glow: 87 107 84;
+    --accent: 147 31 29;
+    
+    /* Safari fallback colors */
+    --bg-fallback: #fce7c7;
+    --text-fallback: #576b54;
+    --accent-fallback: #931f1d;
+    
+    /* Hero bubble overlay - lighter in light mode */
+    --hero-bubble-bg: rgba(0, 0, 0, 0.15);
+  }
+
+  [data-theme='dark'] {
+    /* Dark theme */
+    --bg: 0 0 0;
+    --text: 141 170 157;
+    --muted: 141 170 157;
+    --border: 255 255 255;
+    --card: 255 255 255;
+    --glow: 141 170 157;
+    --accent: 147 31 29;
+    
+    /* Safari fallback colors */
+    --bg-fallback: #000000;
+    --text-fallback: #8daa9d;
+    --accent-fallback: #931f1d;
+    
+    /* Hero bubble overlay - darker in dark mode */
+    --hero-bubble-bg: rgba(0, 0, 0, 0.3);
+  }
+
+  html {
+    scroll-behavior: auto;
+    background-color: rgb(var(--bg));
+    transition: background-color 0.3s ease;
+    color-scheme: light dark;
+  }
+  
+  /* Safari fallback */
+  @supports not (color: rgb(0 0 0 / 0.5)) {
+    html {
+      background-color: var(--bg-fallback);
+    }
+    [data-theme='dark'] html {
+      background-color: #000000;
+    }
+  }
+
+  body {
+    background-color: rgb(var(--bg));
+    color: rgb(var(--text));
+    font-family: 'Inter', system-ui, sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  
+  /* Safari fallback */
+  @supports not (color: rgb(0 0 0 / 0.5)) {
+    body {
+      background-color: var(--bg-fallback);
+      color: var(--text-fallback);
+    }
+    [data-theme='dark'] body {
+      background-color: #000000;
+      color: #8daa9d;
+    }
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+@layer components {
+  .hero-bubble {
+    background-color: var(--hero-bubble-bg) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  }
+  
+  .glow-subtle {
+    box-shadow: 0 0 20px rgb(var(--glow) / 0.15);
+    transition: box-shadow 0.3s ease;
+  }
+  
+  /* Safari fallback for glow-subtle */
+  @supports not (color: rgb(0 0 0 / 0.5)) {
+    .glow-subtle {
+      box-shadow: 0 0 20px rgba(141, 170, 157, 0.15);
+    }
+  }
+
+  .glow-tertiary {
+    box-shadow: 0 0 20px rgb(var(--accent) / 0.5), 0 0 40px rgb(var(--accent) / 0.3);
+    transition: box-shadow 0.3s ease;
+  }
+  
+  /* Safari fallback for glow-tertiary */
+  @supports not (color: rgb(0 0 0 / 0.5)) {
+    .glow-tertiary {
+      box-shadow: 0 0 20px rgba(147, 31, 29, 0.5), 0 0 40px rgba(147, 31, 29, 0.3);
+    }
+  }
+
+  .glass-card {
+    background-color: rgb(var(--card) / 0.05);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgb(var(--border) / 0.15);
+    border-radius: 1rem;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+  
+  /* Safari fallback for glass-card */
+  @supports not (color: rgb(0 0 0 / 0.5)) {
+    .glass-card {
+      background-color: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+  }
+
+  .text-glow {
+    text-shadow: 0 0 20px rgb(var(--glow) / 0.3);
+    transition: text-shadow 0.3s ease;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Lenis Smooth Scroll */
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}

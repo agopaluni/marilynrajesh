@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    :root {
+      --accent: 147 31 29;
+    }
+    
+    .test-bg {
+      background-color: rgb(var(--accent) / 1.0);
+      width: 100px;
+      height: 100px;
+      margin: 20px;
+    }
+    
+    .test-direct {
+      background-color: rgb(147 31 29);
+      width: 100px;
+      height: 100px;
+      margin: 20px;
+    }
+  </style>
+</head>
+<body style="background: white; padding: 20px;">
+  <h1>Testing Tertiary Color</h1>
+  <div>Should see two red squares below:</div>
+  <div class="test-bg">CSS Var</div>
+  <div class="test-direct">Direct RGB</div>
+</body>
+</html>
