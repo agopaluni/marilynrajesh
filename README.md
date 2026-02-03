@@ -289,3 +289,4 @@ This project is for personal portfolio use.
 ---
 
 Built with ❤️ using Next.js, TypeScript, and modern web technologies.
+# Deploy trigger
