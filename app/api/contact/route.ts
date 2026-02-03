@@ -3,6 +3,14 @@ import { client } from '@/lib/sanity'
 
 export async function POST(request: Request) {
   try {
+    // Check if Sanity client is configured
+    if (!client) {
+      return NextResponse.json(
+        { error: 'Sanity client not configured' },
+        { status: 500 }
+      )
+    }
+
     const { name, email, message } = await request.json()
 
     // Validate input
